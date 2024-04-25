@@ -1,0 +1,6 @@
+.idea
+nginx.conf
+.env
+
+input_files
+vector_databases
