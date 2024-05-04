@@ -1,19 +1,20 @@
 services:
   frontend:
-    image: ghcr.io/cedrickring/cora-deploy/frontend:daa5dfbc6b6d44fc148df94fd0bca15dc98ea59d
+    image: ghcr.io/cedrickring/cora-deploy/frontend:aac377c9f5daa2e6a7d3c5e31fc3df532b8cc617
     ports:
       - "8080"
   backend:
-    image: ghcr.io/cedrickring/cora-deploy/backend:daa5dfbc6b6d44fc148df94fd0bca15dc98ea59d
+    image: ghcr.io/cedrickring/cora-deploy/backend:aac377c9f5daa2e6a7d3c5e31fc3df532b8cc617
     environment:
       INPUT_FILES_PATH: "/app/input_files"
       VECTOR_DATABASES_PATH: '/app/vector_databases'
-      AZURE_OPENAI_BASE: "${AZURE_OPENAI_BASE}"
-      AZURE_OPENAI_KEY: "${AZURE_OPENAI_KEY}"
-      AZURE_OPENAI_EMB_MODEL_NAME: "${AZURE_OPENAI_EMB_MODEL_NAME}"
-      AZURE_OPENAI_EMB_DEPLOYMENT: "${AZURE_OPENAI_EMB_DEPLOYMENT}"
-      AZURE_OPENAI_CHATGPT_MODEL: "${AZURE_OPENAI_CHATGPT_MODEL}"
-      AZURE_OPENAI_CHATGPT_DEPLOYMENT: "${AZURE_OPENAI_CHATGPT_DEPLOYMENT}"
+      OPENAI_API_BASE: "${OPENAI_API_BASE}"
+      OPENAI_API_KEY: "${OPENAI_API_KEY}"
+      OPENAI_API_TYPE: "${OPENAI_API_TYPE}"
+      OPENAI_EMBEDDINGS_MODEL: "${OPENAI_EMBEDDINGS_MODEL}"
+      OPENAI_GPT_MODEL: "${OPENAI_GPT_MODEL}"
+      AZURE_EMBEDDINGS_DEPLOYMENT: "${AZURE_EMBEDDINGS_DEPLOYMENT}"
+      AZURE_GPT_MODEL_DEPLOYMENT: "${AZURE_GPT_MODEL_DEPLOYMENT}"
     volumes:
       - ./input_files:/app/input_files
       - ./vector_databases:/app/vector_databases
@@ -21,14 +22,15 @@ services:
       - "5050"
   preprocessing:
     profiles: ["vectorize"]
-    image: ghcr.io/cedrickring/cora-deploy/preprocessing:daa5dfbc6b6d44fc148df94fd0bca15dc98ea59d
+    image: ghcr.io/cedrickring/cora-deploy/preprocessing:aac377c9f5daa2e6a7d3c5e31fc3df532b8cc617
     environment:
       INPUT_FILES_PATH: "/app/input_files"
       OUTPUT_FILES_PATH: '/app/vector_databases'
-      AZURE_OPENAI_BASE: "${AZURE_OPENAI_BASE}"
-      AZURE_OPENAI_KEY: "${AZURE_OPENAI_KEY}"
-      AZURE_OPENAI_EMB_MODEL_NAME: "${AZURE_OPENAI_EMB_MODEL_NAME}"
-      AZURE_OPENAI_EMB_DEPLOYMENT: "${AZURE_OPENAI_EMB_DEPLOYMENT}"
+      OPENAI_API_BASE: "${OPENAI_API_BASE}"
+      OPENAI_API_KEY: "${OPENAI_API_KEY}"
+      OPENAI_API_TYPE: "${OPENAI_API_TYPE}"
+      OPENAI_EMBEDDINGS_MODEL: "${OPENAI_EMBEDDINGS_MODEL}"
+      AZURE_EMBEDDINGS_DEPLOYMENT: "${AZURE_EMBEDDINGS_DEPLOYMENT}"
     volumes:
       - ./input_files:/app/input_files
       - ./vector_databases:/app/vector_databases
