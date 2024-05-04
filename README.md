@@ -8,6 +8,35 @@ Make sure to have the following tools installed:
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
+## Configuring the application
+
+After cloning the repository, the application can be configured by altering the .env file in this repo. To create a new .env file, copy the .env.sample file and adjust the values accordingly.
+
+### OpenAI
+For OpenAI you must set the following environment variables accordingly:
+
+```shell
+OPENAI_API_BASE="https://api.openai.com/v1"
+OPENAI_API_KEY="<YOUR_API_KEY>"
+OPENAI_EMBEDDINGS_MODEL="<YOUR_EMBEDDINGS_MODEL>"
+OPENAI_GPT_MODEL="<YOUR_GPT_MODEL>"
+```
+
+### Azure OpenAI
+For Azure OpenAI you must set the following environment variables accordingly:
+
+```shell
+OPENAI_API_BASE="<YOUR_ENDPOINT>"
+OPENAI_API_KEY="<YOUR_API_KEY>"
+OPENAI_EMBEDDINGS_MODEL="<YOUR_EMBEDDINGS_MODEL>"
+OPENAI_GPT_MODEL="<YOUR_GPT_MODEL>"
+
+# Azure specific variables
+OPENAI_API_TYPE='azure'
+AZURE_EMBEDDINGS_DEPLOYMENT="<YOUR_EMBEDDINGS_DEPLOYMENT>"
+AZURE_GPT_MODEL_DEPLOYMENT="<YOUR_GPT_MODEL_DEPLOYMENT>"
+```
+
 ## Preprocessing the data
 
 Before running the application, you need to preprocess the documents you want to ask questions against. The documents need to be put in `input_files/`. For now, we only support `.pdf` files.
