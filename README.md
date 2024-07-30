@@ -20,6 +20,7 @@ OPENAI_API_BASE="https://api.openai.com/v1"
 OPENAI_API_KEY="<YOUR_API_KEY>"
 OPENAI_EMBEDDINGS_MODEL="<YOUR_EMBEDDINGS_MODEL>"
 OPENAI_GPT_MODEL="<YOUR_GPT_MODEL>"
+BACKEND_URL="<PUBLIC HOST OF BACKEND>"
 ```
 
 ### Azure OpenAI
@@ -30,11 +31,13 @@ OPENAI_API_BASE="<YOUR_ENDPOINT>"
 OPENAI_API_KEY="<YOUR_API_KEY>"
 OPENAI_EMBEDDINGS_MODEL="<YOUR_EMBEDDINGS_MODEL>"
 OPENAI_GPT_MODEL="<YOUR_GPT_MODEL>"
+BACKEND_URL="<PUBLIC HOST OF BACKEND>"
 
 # Azure specific variables
-OPENAI_API_TYPE='azure'
+OPENAI_API_TYPE="azure"
 AZURE_EMBEDDINGS_DEPLOYMENT="<YOUR_EMBEDDINGS_DEPLOYMENT>"
 AZURE_GPT_MODEL_DEPLOYMENT="<YOUR_GPT_MODEL_DEPLOYMENT>"
+
 ```
 
 ## Preprocessing the data
@@ -62,8 +65,6 @@ After setting the environment variables, you can run the application using the f
 ```bash
 docker compose up -d
 ```
-
-This will start the application and make it accessible through a reverse proxy (nginx) at `http://localhost`. As this setup will probably not satisfy your needs, feel free to adjust the `nginx.conf` file.
 
 ## Stopping the application
 
