@@ -1,10 +1,10 @@
 services:
   frontend:
-    image: ghcr.io/cedrickring/cora-deploy/frontend:ba6b8de350dbaef580a9e968b93c2cd0ea6d9782
+    image: ghcr.io/cedrickring/cora-deploy/frontend:ecc52d935cd360164b34e968577b9eb32762f600
     ports:
       - "8080"
   backend:
-    image: ghcr.io/cedrickring/cora-deploy/backend:ba6b8de350dbaef580a9e968b93c2cd0ea6d9782
+    image: ghcr.io/cedrickring/cora-deploy/backend:ecc52d935cd360164b34e968577b9eb32762f600
     environment:
       INPUT_FILES_PATH: "/app/input_files"
       VECTOR_DATABASES_PATH: '/app/vector_databases'
@@ -22,7 +22,7 @@ services:
       - "5050"
   preprocessing:
     profiles: ["vectorize"]
-    image: ghcr.io/cedrickring/cora-deploy/preprocessing:ba6b8de350dbaef580a9e968b93c2cd0ea6d9782
+    image: ghcr.io/cedrickring/cora-deploy/preprocessing:ecc52d935cd360164b34e968577b9eb32762f600
     environment:
       INPUT_FILES_PATH: "/app/input_files"
       OUTPUT_FILES_PATH: '/app/vector_databases'
